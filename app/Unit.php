@@ -10,10 +10,21 @@ class Unit extends Model
     
     public function user()
     {
-        return $this->belongsTo(Unit::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function setUnitAttribute($value) {
+    public function setUnitAttribute($value) 
+    {
         $this->attributes['unit'] = strtolower($value);
+    }
+
+    public function getUrlAttribute() 
+    {
+        return route('units.show', $this->id);
+    }
+    
+    public function getCreatedDateAttribute() 
+    {
+        return $this->created_at->diffForHumans();
     }
 }

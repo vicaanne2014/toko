@@ -40,6 +40,11 @@ class User extends Authenticatable
 
     public function units()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Unit::class);
+    }
+
+    public function getUrlAttribute() 
+    {
+        return "#";
     }
 }
