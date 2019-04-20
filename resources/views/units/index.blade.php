@@ -27,8 +27,12 @@
                                         dibuat: <a href="{{ $unit->user->url }}">{{ $unit->user->name }}</a> {{$unit->created_date}}
                                     </div>
                                     <div class="ml-auto mr-3">
-                                    <a href="{{ route('units.create') }}" class="btn btn-sm btn-outline-success">Ubah</a>
-                                    <a href="{{ route('units.create') }}" class="btn btn-sm btn-outline-danger">Hapus</a>
+                                    <a href="{{ route('units.edit', $unit->id) }}" class="btn btn-sm btn-outline-success">Ubah</a>
+                                    <form class="form-delete" action="{{ route('units.destroy', $unit->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button onclick="return confirm('Anda yakin ingin menghapus Satuan {{$unit->unit}}')" type="submit" class="btn btn-sm btn-outline-danger">Hapus</button>
+                                    </form>
                                     </div>
                                 </div>
                             </div>

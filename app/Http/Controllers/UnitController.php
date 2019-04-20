@@ -64,7 +64,7 @@ class UnitController extends Controller
      */
     public function edit(unit $unit)
     {
-        //
+        return view('units.edit', compact('unit'));
     }
 
     /**
@@ -76,7 +76,9 @@ class UnitController extends Controller
      */
     public function update(UnitRequest $request, unit $unit)
     {
-        //
+        $unit->update($request->only('unit'));
+
+        return redirect()->route('units.index')->with('success', '\'Satuan\' berhasil diubah');
     }
 
     /**
@@ -87,6 +89,8 @@ class UnitController extends Controller
      */
     public function destroy(unit $unit)
     {
-        //
+        $unit->delete();
+
+        return redirect()->route('units.index')->with('success', '\'Satuan\' berhasil dihapus');
     }
 }

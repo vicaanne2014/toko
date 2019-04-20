@@ -15,8 +15,9 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('units.store') }}" method="post">
-                        @include('units._form', ['buttonText' => 'Tambah Satuan'])
+                    <form action="{{ route('units.update', $unit->id) }}" method="post">
+                        @method('PATCH')
+                        @include('units._form', ['buttonText' => 'Ubah Satuan'])
                     </form>
                 </div>
             </div>
