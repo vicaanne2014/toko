@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+    <div class="mb-1">
+        @include('layouts._message')
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">

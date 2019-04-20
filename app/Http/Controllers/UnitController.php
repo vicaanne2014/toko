@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\unit;
 use Illuminate\Http\Request;
+use App\Http\Requests\UnitRequest;
 
 class UnitController extends Controller
 {
@@ -26,7 +27,9 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        $unit = new Unit();
+
+        return view('units.create', compact('unit'));
     }
 
     /**
@@ -35,9 +38,11 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UnitRequest $request)
     {
-        //
+        $request->user()->units()->create($request->only('unit'));
+
+        return redirect()->route('units.index')->with('success', '\'Satuan\' berhasil ditambahkan');
     }
 
     /**
@@ -69,7 +74,7 @@ class UnitController extends Controller
      * @param  \App\unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, unit $unit)
+    public function update(UnitRequest $request, unit $unit)
     {
         //
     }
